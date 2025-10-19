@@ -51,6 +51,10 @@ venv\Scripts\activate         # Windows
 Версия chromedriver должна совпадать с версией браузера Google Chrome.
 
 🚀 Запуск тестов
+Запуск всех тестов:
+pytest -v
+Запуск всех тестов с allur:
+pytest --alluredir=./allure-results; allure serve ./allure-results 
 Запуск всех UI тестов: 
 pytest -k test_ui.py
 Запуск конкретного теста: 
