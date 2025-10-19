@@ -12,7 +12,7 @@ class DeleteFromCart:
 
     @allure.step("Инициализация класса DeleteFromCart")
     def __init__(self, url):
-        
+
         self.url = url
         self.headers = {
             'Content-Type': 'application/json',  # Указываем, что отправляем JSON
@@ -20,7 +20,7 @@ class DeleteFromCart:
         }
 
     @allure.step("Получение содержимого корзины")
-    def get_cart_contents(self)-> dict:
+    def get_cart_contents(self) -> dict:
         """
         Получает содержимое корзины.
 
@@ -28,10 +28,11 @@ class DeleteFromCart:
         """
         # Отправляем GET-запрос для получения содержимого корзины
         response = requests.get(self.url_2, headers=self.headers)
-        return response.status_code, response.json()  # Возвращаем статус-код и данные корзины
+        # Возвращаем статус-код и данные корзины
+        return response.status_code, response.json()
 
     @allure.step("Удаление товара из корзины")
-    def delete_product_from_cart(self, prod_id)-> None:
+    def delete_product_from_cart(self, prod_id) -> None:
         """
         Удаляет товар из корзины.
 
@@ -39,5 +40,6 @@ class DeleteFromCart:
         :return: Статус-код ответа от сервера.
         """
         # Отправляем DELETE-запрос для удаления товара из корзины
-        response = requests.delete(self.url_2, headers=self.headers, data=json.dumps(prod_id))
+        response = requests.delete(
+            self.url_2, headers=self.headers, data=json.dumps(prod_id))
         return response.status_code  # Возвращаем статус-код ответа
